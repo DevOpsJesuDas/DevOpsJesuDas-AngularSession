@@ -3,16 +3,29 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
-
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    console.log('Inside HTTP Interceptor');
+
+    if (request.headers.has('Content-Type')) {
+      console.log('Inside the If condition');
+      return next.handle(request);
+    }
+
+    request = request.clone({
+      headers: request.headers.set('Content-Type', 'application/json'),
+    });
+
     return next.handle(request);
   }
 }

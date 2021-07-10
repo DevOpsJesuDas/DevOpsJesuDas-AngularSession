@@ -7,10 +7,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptors } from '../shared/inteceptors';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [CommonModule, FormsModule, HttpClientModule, UserRoutingModule],
-  providers: [UserService],
+  providers: [UserService, httpInterceptors],
 })
 export class UserModule {}

@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
         console.log(JSON.stringify(response));
       },
       (error) => {
-        console.log(JSON.stringify(error));
+        console.log(
+          'Error Message from register comp:: ' + JSON.stringify(error)
+        );
         this.error = error.error;
       }
     );
