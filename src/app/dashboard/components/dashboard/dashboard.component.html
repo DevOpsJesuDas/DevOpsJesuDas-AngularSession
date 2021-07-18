@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<p>Welcome {{ userDetails.name }}</p>
+
+<div *ngIf="profile == null">
+  {{ error.noprofile }}
+  <a routerLink="/profile/create" class="btn btn-primary my-1"
+    >Create Profile</a
+  >
+</div>
+<div *ngIf="profile != null">
+  <app-dashboard-action></app-dashboard-action>
+</div>

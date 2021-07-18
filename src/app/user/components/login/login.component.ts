@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from '../../models/login';
 import { UserService } from '../../services/user.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,16 @@ export class LoginComponent implements OnInit {
       (response) => {
         console.log(JSON.stringify(response));
         localStorage.setItem('token', response.token);
+
+        console.log(JSON.stringify(jwt_decode(response.token)));
+
+        localStorage.setItem(
+          'userdetails',
+          JSON.stringify(jwt_decode(response.token))
+        );
+
+        const exp = JSON.parse(JSON.stringify(jwt_decode(response.token))).exp;
+
         this.router.navigate(['/dashboard/']);
       },
       (error) => {
