@@ -24,4 +24,8 @@ export class ProfileService {
   createEducation(education: Education): Observable<any> {
     return this.httpClient.post('/api/profile/education', education);
   }
+
+  deleteExperience(id: string): Observable<any> {
+    return this.httpClient.delete('/api/profile/experience/' + id);
+  }
 }

@@ -1,5 +1,6 @@
 import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/profile/service/profile.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   userName: string;
   userDetails: any = {};
 
-  constructor(private profileService: ProfileService) {}
+  constructor(private profileService: ProfileService, private router: Router) {}
 
   ngOnInit(): void {
     this.userName = JSON.parse(localStorage.getItem('userdetails')).name;
@@ -26,9 +27,12 @@ export class DashboardComponent implements OnInit {
     this.profileService.getProfile().subscribe(
       (res) => {
         console.log('Response::', JSON.stringify(res));
-        this.profile = JSON.stringify(res);
+        this.profile = res;
       },
       (err) => {
+        if (err.error.status === '401') {
+          this.router.navigate(['/user/login']);
+        }
         this.profile = null;
         console.log('Error::::', JSON.stringify(err));
         this.error.noprofile = err.error.noprofile;

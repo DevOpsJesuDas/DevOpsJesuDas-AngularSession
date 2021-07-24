@@ -8,4 +8,10 @@
 </div>
 <div *ngIf="profile != null">
   <app-dashboard-action></app-dashboard-action>
+  <app-dashboard-exp-details
+    [exp]="profile.experience"
+  ></app-dashboard-exp-details>
+  <app-dashboard-edu-details
+    [edu]="profile.education"
+  ></app-dashboard-edu-details>
 </div>
