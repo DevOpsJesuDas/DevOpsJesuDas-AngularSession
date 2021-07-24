@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-body bg-light mb-3">
+      <h3 class="text-center text-info">John's Bio</h3>
+      <p class="lead">{{ bio }}</p>
+      <hr />
+      <h3 class="text-center text-info">Skill Set</h3>
+      <div class="row">
+        <div
+          class="d-flex flex-wrap justify-content-center align-items-center"
+          *ngFor="let s of skills"
+        >
+          <div class="p-3"><i class="fa fa-check"></i> {{ s }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@
           {{ e.from | date: "MM-dd-YYYY" }} - {{ e.to | date: "MM-dd-YYYY" }}
         </td>
         <td>
-          <button class="btn btn-danger" (click)="deleteExp(e.id)">
+          <button class="btn btn-danger" (click)="deleteExp(e._id)">
             Delete
           </button>
         </td>

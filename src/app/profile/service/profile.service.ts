@@ -15,9 +15,18 @@ export class ProfileService {
     return this.httpClient.get('/api/profile');
   }
 
+  getProfiles(): Observable<any> {
+    return this.httpClient.get('/api/profile/all');
+  }
+
   createProfile(profile: Profile): Observable<any> {
     return this.httpClient.post('/api/profile', profile);
   }
+
+  deleteProfile(): Observable<any> {
+    return this.httpClient.delete('/api/profile');
+  }
+
   createExperience(experience: Experience): Observable<any> {
     return this.httpClient.post('/api/profile/experience', experience);
   }
@@ -27,5 +36,13 @@ export class ProfileService {
 
   deleteExperience(id: string): Observable<any> {
     return this.httpClient.delete('/api/profile/experience/' + id);
+  }
+
+  deleteEducation(id: string): Observable<any> {
+    return this.httpClient.delete('/api/profile/education/' + id);
+  }
+
+  getProfileDetailsByUserId(userId: string) {
+    return this.httpClient.get('/api/profile/user/' + userId);
   }
 }

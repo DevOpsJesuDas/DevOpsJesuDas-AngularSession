@@ -14,7 +14,10 @@ export class CreateProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Need to get Profile data for Edit it
+    // this.getProfileData();
+  }
 
   createProfileSubmit() {
     this.profileService.createProfile(this.profile).subscribe(
@@ -24,6 +27,24 @@ export class CreateProfileComponent implements OnInit {
       (err) => {
         // Need to Handle Error
         this.error = err.error;
+      }
+    );
+  }
+
+  getProfileData() {
+    this.profileService.getProfile().subscribe(
+      (res) => {
+        console.log('Response::', JSON.stringify(res));
+        this.profile = res;
+        this.profile.skills = res.skills.toString();
+      },
+      (err) => {
+        if (err.error.status === '401') {
+          this.router.navigate(['/user/login']);
+        }
+        this.profile = null;
+        console.log('Error::::', JSON.stringify(err));
+        this.error.noprofile = err.error.noprofile;
       }
     );
   }

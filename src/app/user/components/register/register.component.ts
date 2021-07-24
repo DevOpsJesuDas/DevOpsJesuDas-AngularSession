@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Register } from '../../models/register';
 import { UserService } from '../../services/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from '../../services/user.service';
 export class RegisterComponent implements OnInit {
   register: Register = new Register();
   error: any = {};
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
     this.userService.registerUser(this.register).subscribe(
       (response) => {
         console.log(JSON.stringify(response));
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.log(

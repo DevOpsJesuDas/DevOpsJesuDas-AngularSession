@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Login } from '../../models/login';
 import { UserService } from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
+import { SubjectService } from 'src/app/shared/services/subject.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,11 @@ export class LoginComponent implements OnInit {
   // login: Login = new Login();
   login: any = {};
   error: any = {};
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private subjectService: SubjectService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -30,6 +35,9 @@ export class LoginComponent implements OnInit {
           'userdetails',
           JSON.stringify(jwt_decode(response.token))
         );
+
+        // set the login flag
+        this.subjectService.loginSubject.next(true);
 
         const exp = JSON.parse(JSON.stringify(jwt_decode(response.token))).exp;
 

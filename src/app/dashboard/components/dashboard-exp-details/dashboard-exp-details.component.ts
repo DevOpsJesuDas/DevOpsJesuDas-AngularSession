@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/profile/service/profile.service';
 
@@ -10,6 +10,8 @@ import { ProfileService } from 'src/app/profile/service/profile.service';
 export class DashboardExpDetailsComponent implements OnInit {
   @Input()
   exp: any[] = [];
+  @Output()
+  expId: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private profileService: ProfileService, private router: Router) {}
 
@@ -18,13 +20,7 @@ export class DashboardExpDetailsComponent implements OnInit {
   }
 
   deleteExp(id: string) {
-    this.profileService.deleteExperience(id).subscribe(
-      (res) => {
-        console.log('Response::', JSON.stringify(res));
-      },
-      (err) => {
-        console.log('Error::::', JSON.stringify(err));
-      }
-    );
+    console.log('In Child :::::' + id);
+    this.expId.emit(id);
   }
 }

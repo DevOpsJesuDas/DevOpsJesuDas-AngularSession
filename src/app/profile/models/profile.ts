@@ -12,4 +12,5 @@ export class Profile {
   linkedin: string;
   youtube: string;
   instagram: string;
+  user: any;
 }

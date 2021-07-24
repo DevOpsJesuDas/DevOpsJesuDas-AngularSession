@@ -10,8 +10,17 @@
   <app-dashboard-action></app-dashboard-action>
   <app-dashboard-exp-details
     [exp]="profile.experience"
+    (expId)="deleteExperience($event)"
   ></app-dashboard-exp-details>
   <app-dashboard-edu-details
     [edu]="profile.education"
+    (edId)="deleteEducation($event)"
   ></app-dashboard-edu-details>
+</div>
+
+<!-- <div *ngIf="profile != null"> -->
+<div>
+  <button class="btn btn-danger" (click)="deleteProfile()">
+    Delete Profile
+  </button>
 </div>

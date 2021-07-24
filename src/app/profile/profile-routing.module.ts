@@ -3,10 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEducationComponent } from './components/add-education/add-education.component';
 import { AddExperienceComponent } from './components/add-experience/add-experience.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
+import { DisplayProfileItemComponent } from './components/display/display-profile-item/display-profile-item.component';
+import { DisplayProfileComponent } from './components/display/display-profile/display-profile.component';
+import { DisplayProfilesComponent } from './components/display/display-profiles/display-profiles.component';
 
 const routes: Routes = [
   {
     path: 'create',
+    component: CreateProfileComponent,
+  },
+  {
+    path: 'update',
     component: CreateProfileComponent,
   },
   {
@@ -16,6 +23,14 @@ const routes: Routes = [
   {
     path: 'education',
     component: AddEducationComponent,
+  },
+  {
+    path: 'display-profiles',
+    component: DisplayProfilesComponent,
+  },
+  {
+    path: 'display-profile/:id',
+    component: DisplayProfileComponent,
   },
 ];
 

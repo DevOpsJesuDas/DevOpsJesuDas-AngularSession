@@ -1,0 +1,30 @@
+<div class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-6">
+            <a
+              routerLink="/profile/display-profiles"
+              class="btn btn-light mb-3 float-left"
+              >Back To Profiles</a
+            >
+          </div>
+          <div class="col-6"></div>
+          <app-profile-header
+            [name]="profile.user.name"
+            [company]="profile.company"
+            [status]="profile.status"
+            [location]="profile.location"
+          ></app-profile-header>
+          <app-profile-about
+            [bio]="profile.bio"
+            [skills]="profile.skills"
+          ></app-profile-about>
+          <app-profile-creds [profile]="profile"></app-profile-creds>
+          <app-profile-github [profile]="profile"></app-profile-github>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

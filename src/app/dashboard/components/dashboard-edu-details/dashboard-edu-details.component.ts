@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-edu-details',
@@ -8,7 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DashboardEduDetailsComponent implements OnInit {
   @Input()
   edu: any[] = [];
+  @Output()
+  edId: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('Inpup value:::==>', this.edu);
+  }
+  deleteEdu(id: string) {
+    console.log('In Child :::::' + id);
+    this.edId.emit(id);
+  }
 }

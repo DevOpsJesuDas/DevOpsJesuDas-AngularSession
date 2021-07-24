@@ -1,0 +1,14 @@
+<p>display-profiles works!</p>
+<div class="profiles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4 text-center">Developer Profiles</h1>
+        <p class="lead text-center">Browse and connect with developers</p>
+        <div *ngFor="let p of profiles">
+          <app-display-profile-item [profile]="p"></app-display-profile-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
