@@ -16,7 +16,7 @@ export class CreateProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // Need to get Profile data for Edit it
-    // this.getProfileData();
+    //this.getProfileData();
   }
 
   createProfileSubmit() {

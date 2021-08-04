@@ -10,6 +10,16 @@
               >Back To Profiles</a
             >
           </div>
+          <div *ngIf="profile.user._id === _userId">
+            <button class="btn btn-danger" (click)="deleteProfile()">
+              Delete Profile
+            </button>
+            &nbsp;
+            <button class="btn btn-danger" (click)="editProfile()">
+              Edit Profile
+            </button>
+          </div>
+          <br />
           <div class="col-6"></div>
           <app-profile-header
             [name]="profile.user.name"

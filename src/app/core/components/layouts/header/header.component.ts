@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SubjectService } from 'src/app/shared/services/subject.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { SubjectService } from 'src/app/shared/services/subject.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  loginFlag: boolean;
+  loginFlag: boolean = localStorage.getItem('token') != null;
 
-  constructor(private subjectService: SubjectService) {}
+  constructor(private subjectService: SubjectService, private router: Router) {}
 
   ngOnInit(): void {
     this.subjectService.loginSubject.subscribe(
@@ -20,5 +21,12 @@ export class HeaderComponent implements OnInit {
         this.loginFlag = false;
       }
     );
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userdetails');
+    this.loginFlag = false;
+    this.router.navigate(['/user/login']);
   }
 }

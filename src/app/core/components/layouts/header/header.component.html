@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
   <div class="container">
-    <a class="navbar-brand" routerLink="/profile/display-profiles"
+    <a class="navbar-brand" routerLink="{{ !loginFlag ? '' : ['/dashboard'] }}"
       >DevConnector</a
     >
     <button
@@ -15,7 +15,9 @@
     <div class="collapse navbar-collapse" id="mobile-nav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="profiles.html"> Developers </a>
+          <a class="nav-link" routerLink="/profile/display-profiles">
+            Developers
+          </a>
         </li>
       </ul>
 
@@ -31,9 +33,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/logout" *ngIf="loginFlag"
-            >Logout</a
-          >
+          <a class="nav-link" (click)="logout()" *ngIf="loginFlag">Logout</a>
         </li>
       </ul>
     </div>

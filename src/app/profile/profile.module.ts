@@ -16,6 +16,8 @@ import { ProfileHeaderComponent } from './components/display/display-profile/pro
 import { ProfileAboutComponent } from './components/display/display-profile/profile-about/profile-about.component';
 import { ProfileCredsComponent } from './components/display/display-profile/profile-creds/profile-creds.component';
 import { ProfileGithubComponent } from './components/display/display-profile/profile-github/profile-github.component';
+import { ProfileEducationComponent } from './components/display/display-profile/profile-education/profile-education.component';
+import { ProfileExperienceComponent } from './components/display/display-profile/profile-experience/profile-experience.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ProfileGithubComponent } from './components/display/display-profile/pro
     ProfileAboutComponent,
     ProfileCredsComponent,
     ProfileGithubComponent,
+    ProfileEducationComponent,
+    ProfileExperienceComponent,
   ],
   imports: [CommonModule, FormsModule, HttpClientModule, ProfileRoutingModule],
   providers: [ProfileService, httpInterceptors],
